@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>linklist</title>
+</head>
+<body>
+    
+    <script>
+        class Node{
+            constructor(data){
+                this.data=data;
+                this.next=null;
+            }
+        }
+
+        class linkedList{
+          constructor(){
+            this.head=null;
+            this.tail=null;
+            this.size=0;
+          }
+          isEmpty(){
+            return this.size===0;
+          }
+          add(data){
+            let no=new Node(data)
+            if(this.isEmpty()){
+                this.head=no;
+                this.tail=no;
+            }
+            else{
+                this.tail.next=no
+                this.tail=no;
+                
+            }
+            this.size++;
+            // document.write(no.data,"->")
+          }
+
+   
+rev(){
+  if(this.head==null||this.head.next==null){
+    return this.head;
+  }
+else{
+  let prev=null;
+  let curr=this.head;
+  while(curr){
+   let next=curr.next;
+    curr.next=prev;
+    prev=curr;
+    curr=next;
+  }
+  this.head=prev;
+}
+}
+
+          print(){
+            let curr=this.head;
+        let str=''
+            while(curr){
+               str+=curr.data+"-"
+            curr=curr.next;
+            }
+        document.writeln(str)
+          }
+
+
+        }
+let l1=new linkedList();
+
+l1.add(5);
+l1.add(6);
+l1.add(8);
+l1.add(7);
+l1.add(8);
+l1.print(); 
+l1.rev()
+l1.print();
+
+
+    </script>
+</body>
+</html>

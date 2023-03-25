@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+class PriorityQueue{
+
+constructor(){
+this.values =[];
+}
+enqueue(val, priority){
+this.values.push({val:val, priority});
+this.sort()
+}
+dequeue(){
+return this.values.shift().val;
+}
+sort(){
+this.values.sort((a,b) =>a.priority-b.priority);
+}
+isEmpty(){
+    return this.values.length==0
+}
+front(){   
+    return this.values[0].val
+}
+}
+
+let p=new PriorityQueue();
+p.enqueue(5,12);
+p.enqueue(2,6);
+p.enqueue(3,7);
+p.enqueue(4,5);
+p.enqueue(1,9);
+document.write(p.dequeue()," ")
+document.write(p.dequeue()," ")
+document.write(p.dequeue()," ")
+document.write(p.dequeue()," ")
+document.write(p.dequeue()," ")
+
+// document.write(p.isEmpty())
+
+    </script>
+</body>
+</html>

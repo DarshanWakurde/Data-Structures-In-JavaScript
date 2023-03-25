@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>recursion</title>
+</head>
+<body>
+    <script>
+      
+//  function rec(num){
+//     let name="Darshan"
+//     if(num==0){
+//     return;
+//     }
+//     document.write(name," ")
+//     rec(num-1);
+//  }
+//  let n=5;
+//  rec(n);
+
+function lin(i,no){
+    if(i>no){
+         return;
+    }
+    lin(i+1,no);
+    document.write(i);
+    document.write("<br>")
+    
+}
+lin(1,5)
+
+
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+function f(i,arr,ar,n){
+
+if(i>=n){
+   
+         for (let i=0;i<ar.length;i++){
+            if(ar[i]!=undefined)
+                document.write(ar[i])
+         }
+   
+ document.write("<br>")
+    return;
+}
+
+if(ar.length==0){
+    document.write(0)
+}
+
+ar.push(arr[i])
+f(i+1,arr,ar,n);
+ar.pop()
+f(i+1,arr,ar,n)
+
+}
+
+let arr=[3,1,2]
+let n=arr.length
+let ar=new Array(arr.length-1)
+
+f(0,arr,ar,n)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //     function f(ind,arr,ar,n){
+    //         if(ind>=n){
+    //             document.write(ar)
+    //             document.write("<br>")
+    //             return;
+    //         }
+    //         ar.push(arr[ind])
+    //         f(ind+1,arr,ar,n)
+    //         ar.splice(arr[ind],arr[ind])
+    //         f(ind+1,arr,ar,n)
+    //     }
+
+
+    //     let arr=[3,1,2]
+    // let n=3;
+    //     let ar=new Array(arr.length)
+    //     f(0,arr,ar,n)
+
+
+    </script>
+</body>
+</html>

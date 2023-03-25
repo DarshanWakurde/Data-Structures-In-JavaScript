@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Graph{
+            constructor(noofVer){
+                this.noofVer=noofVer
+                this.list=new Map()
+            }
+            addvert(v){
+                this.list.set(v,[])
+            }
+            addEdge(v,w){
+                this.list.get(v).push(w)
+                this.list.get(w).push(v)
+            }
+
+            bfs(v){
+                
+                let que=[]
+                que.push(v)
+                let visited=[]
+                while(que.length>0){
+                    let element=que.pop()
+                    visited[element]=true
+                    document.write(element," ")
+                let data=this.list.get(element)
+                for(let e in data){
+                    let i=data[e]
+                    if(!visited[i]){
+                        que.push(i)
+                        visited[i]=true
+                    }
+                }
+                }
+            }
+        }
+
+
+        let g=new Graph(4);
+g.addvert('A')
+g.addvert('B')
+g.addvert('C')
+g.addvert('D')
+g.addvert('E')
+g.addvert('F')
+g.addvert('G')
+g.addvert('H')
+g.addvert('I')
+//------------------------------
+g.addEdge('A','B','D','E')
+g.addEdge('B','C','A','E')
+g.addEdge('C','F',)
+g.addEdge('D','A','G')
+g.addEdge('E','A','B','G')
+g.addEdge('F','C')
+g.addEdge('G','E','D','H')
+g.addEdge('H','I','G')
+g.addEdge('I','H')
+// g.printGraph();
+g.bfs('A');
+    </script>
+</body>
+</html>

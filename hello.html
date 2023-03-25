@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>hello world</title>
+</head>
+
+<body>
+    <p>
+<input type="number" name="enter number" id="no1">
+<br>
+<select name="operator" id="op">
+    <option value="add">+</option>
+    <option value="sub">-</option>
+    <option value="mul">X</option>
+    <option value="div">/</option>
+  </select>
+<br>
+<input type="number" id="no2">
+
+<input type="button" value="submit" onclick="cal()">
+<br>
+
+<p id="ans"> </p>
+hello world<br>
+
+</p>
+
+<style>
+html.body{
+    vertical-align: middle;
+}
+</style>
+
+<script>
+
+
+function cal(){
+let data1=document.getElementById("no1").value
+let data2=document.getElementById("no2").value
+let oper=document.getElementById("op").value
+let ans=0;
+data1=Number.parseInt(data1)
+data2=Number.parseInt(data2)
+switch(oper){
+    case "add":{
+        ans=data1+data2
+        document.getElementById("ans").innerHTML=ans
+        break;
+    }
+    case "sub":{
+        ans=data1-data2
+        document.getElementById("ans").innerHTML=ans
+
+        break
+    }
+    case "mul":{
+        ans=data1*data2
+        document.getElementById("ans").innerHTML=ans
+
+        break
+    }
+    case "div":{
+        ans=data1/data2
+        document.getElementById("ans").innerHTML=ans
+
+        break
+    }
+}
+}
+</script>
+</body>
+
+
+</html>

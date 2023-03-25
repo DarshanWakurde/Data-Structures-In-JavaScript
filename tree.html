@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        class node {
+    constructor(data) {
+        this.data=data;
+        this.left = null;
+       this.right = null;
+    }
+}
+
+class tree{
+    constructor(){
+        this.root==null;
+    }
+insert(data){
+       let no=new node(data);
+       if(this.root==null){
+           this.root=no;
+       }
+       else{
+             this.insertnex(this.root,no);
+       }
+   }
+   
+   insertnex(root,no){
+        if(root.data>no.data){
+            if(root.left==null){
+                root.left=no;
+            }
+            else{
+                this.insertnex(root.left,no);
+            }
+        }
+   if(root.data<no.data){
+            if(root.right==null){
+                root.right=no;
+            }
+            else{
+                this.insertnex(root.right,no);
+            }
+        }
+    }
+
+     min(root){
+     let minv;
+        while(root!=null){
+          minv=root.data
+          root=root.left;
+        }
+        return minv;
+    }
+
+
+
+    delete(data){
+        this.delnode(this.root,data)
+    }
+
+
+    delnode(root,data){
+       
+    
+   if(data<root.data){
+        root.left=this.delnode(root.left,data)
+      }
+      else if(data>root.data){
+        root.right=this.delnode(root.right,data)
+      }
+      else{
+
+         if(root.right==null && root.left==null)
+         {
+            return null;
+         }
+       
+        if(root.right==null){
+            return root.left
+        }
+        else if(root.left==null){
+            return root.right
+        }
+        root.data=this.min(root.right)
+        root.right=this.delnode(root.right,root.data)
+      }
+      return root;
+    }
+
+   
+   
+   preorder(node)
+{
+    if(node !== null)
+    {
+        document.write(node.data," ");
+        this.preorder(node.left);
+        this.preorder(node.right);
+       
+    }
+}
+inorder(node)
+{
+    if(node !== null)
+    {
+        this.inorder(node.left);
+        document.write(node.data," ");
+       
+        this.inorder(node.right);
+       
+    }
+}
+
+postorder(node){
+    if(node !==null){
+        this.postorder(node.left);
+        this.postorder(node.right);
+        document.write(node.data);
+    }
+
+}
+        }
+
+
+let t=new tree();
+t.insert(13)
+t.insert(6)
+t.insert(4)
+t.insert(1)
+t.insert(17)
+t.insert(14)
+t.insert(15)
+t.insert(20)
+t.insert(23)
+t.insert(9)
+t.insert(7)
+document.write("preorder")
+document.write("<br>")
+t.preorder(t.root);
+document.write("<br>")
+document.write("deleted")
+document.write("<br>")
+t.delete(17);
+t.preorder(t.root)
+document.write("<br>")
+document.write("inorder")
+document.write("<br>")
+t.inorder(t.root);
+document.write("<br>")
+document.write("post order")
+document.write("<br>")
+t.postorder(t.root)
+    </script>
+</body>
+</html>

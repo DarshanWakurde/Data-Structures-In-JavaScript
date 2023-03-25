@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circular queue</title>
+</head>
+<body>
+    <script>
+   
+  class que{
+    constructor(size){
+        this.arr=new Array(size);
+        this.front=-1;
+        this.rear=-1;
+        this.size=size;
+        this.currlen=0
+        }
+            isFull(){
+                return this.size==this.currlen
+            }
+            isEmpty(){
+                return this.currlen==0;
+            }
+            frnt(){
+                return this.arr[this.front]
+            }
+            enqueue(data){
+                if(!this.isFull()){
+                this.rear++;
+                this.rear=this.rear%this.size
+                this.arr[this.rear]=data
+                if(this.isEmpty()){
+                    this.front=this.rear
+                }
+                this.currlen++
+                }
+                else{
+                    document.write("its full")
+                }
+            }
+            dequeue(){
+                if(!this.isEmpty()){
+                this.arr[this.front]=null
+                this.front++;
+                this.front=this.front%this.size
+                this.currlen--
+                }
+                else{
+                    document.write("its Empty")
+                } 
+            }
+            print(){
+                document.write(this.arr)
+            }
+  }
+
+  let q=new que(5);
+  q.enqueue(5)
+  q.enqueue(6)
+  q.enqueue(7)
+  q.enqueue(8)
+  q.enqueue(9)
+  document.write("<br>")
+  q.print()
+  document.write("<br>")
+  q.dequeue()
+  document.write("<br>")
+  q.print()
+  document.write("<br>")
+  document.write(q.frnt())
+
+    </script>
+</body>
+</html>

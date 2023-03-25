@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+            class node{
+                constructor(data){
+                    this.data=data
+                    this.left=null;
+                    this.right=null;
+                }
+            }
+
+        class BinaryTreeSearch{
+            constructor(){
+                this.root=null
+            }
+
+        insert(data){
+            let no=new node(data)
+            if(this.root==null){
+                this.root=no
+            }
+            this.inserthelp(this.root,no)
+        }
+
+        inserthelp(root,no){
+            if(root.data>no.data){
+                if(root.left==null){
+                    root.left=no
+                }
+                else{
+                    this.inserthelp(root.left,no)
+                }
+            }
+            else if(root.data<no.data){
+                if(root.right==null){
+                    root.right=no
+                }
+                else{
+                    this.inserthelp(root.right,no)
+                }
+            }
+        }
+
+        preorder(root){
+            if(root!=null){
+            document.write(root.data," ")
+            this.preorder(root.left)
+            this.preorder(root.right)
+            }
+        }
+        min(root){
+            let min;
+            while(root!=null){
+                min=root.data
+                root=root.left
+            }
+            
+            return min
+        }
+
+        delete(data){
+            this.delehel(this.root,data)
+        }
+
+        delehel(root,data){
+                if(data<root.data){
+                    root.left=this.delehel(root.left,data)
+                }
+                else if(data>root.data){
+                    root.right=this.delehel(root.right,data)
+                }
+                else{
+                if(root.left==null && root.right==null){
+                    return null
+                }
+                else if(root.left!=null&&root.right==null){
+                    return root.left
+                }
+                else if(root.right!=null && root.left==null){
+                    return root.right
+                }
+                root.data=this.min(root.right)
+                root.right=this.delehel(root.right,root.data)
+            }
+            return root
+        }
+
+
+        }
+
+        let bst=new BinaryTreeSearch()
+        bst.insert(5)
+        bst.insert(50)
+        bst.insert(51)
+        bst.insert(52)
+        bst.insert(53)
+        bst.insert(20)
+        bst.insert(21)
+        bst.insert(22)
+        bst.insert(2)
+        bst.insert(28)
+        bst.insert(0)
+        bst.preorder(bst.root)
+        bst.delete(0);
+        document.write("<br>")
+        document.write(bst.min(bst.root));
+
+    </script>
+</body>
+</html>

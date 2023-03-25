@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stack</title>
+</head>
+<body>
+    <Script>
+        class Node{
+            constructor(data){
+                this.data=data;
+                this.next=null;
+            }
+        }
+
+        class stack{
+            constructor(){
+                this.top=null;
+                this.size=0;
+            }
+         
+
+            add(data){
+                const no=new Node(data);
+            no.next=this.top;
+            this.top=no;
+        }
+            
+        pop(){
+                if(this.top==null){
+                    document.write("null stack")
+                }
+                else{
+                   
+                    let del=this.top;
+                    this.top=del.next;
+                    return del.data;
+                }
+        }
+
+    print(){
+        if(this.top==null){
+            document.write("null stack")
+        }
+        else{
+                let curr=this.top;
+                while(curr!=null){
+                   
+                    document.write(curr.data);
+                    document.write("<br>");
+                    curr=curr.next;
+                }
+            }
+            }
+
+        }
+
+        let s1=new stack();
+        s1.add(5)
+        s1.add(4)
+        s1.add(3)
+      
+        s1.add(2)
+        s1.add(1)
+        s1.print();
+        document.write("<br>");
+        let a= s1.pop()
+        s1.print();
+        document.write("<br>");
+        document.write(a)
+    </Script>
+</body>
+</html>

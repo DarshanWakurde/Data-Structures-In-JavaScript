@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function rtrap(arr,n){
+                let res=0;
+            for(let i=0;i<n-1;i++){
+                let left=arr[i]
+                for(let j=0;j<i;j++){
+                    left=Math.max(left,arr[j])
+                }
+                let right=arr[i]
+                for(let j=i+1;j<n;j++){
+                    right=Math.max(right,arr[j])
+                }
+                res+=Math.min(left,right)-arr[i]
+            }
+            return res;
+        }
+
+        let arr=[3,2,0,1,4,2]
+        n=arr.length
+
+        document.write(rtrap(arr,n))
+
+
+    </script>
+</body>
+</html>

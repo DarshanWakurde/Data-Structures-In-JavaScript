@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let V=5
+        function minset(key,mstset){
+            let min=Number.MAX_VALUE;
+            let ind=0
+            for(let i=0;i<V;i++){
+                if(key[i]<min && mstset[i]==false){
+                    min=key[i];
+                    ind=i
+                }
+            }
+            return ind
+
+        }
+        function printMST(parent,printGraph){
+            for (let i = 1; i < V; i++)
+		       document.write(parent[i] + "  - " + i + "  " + Graph[i][parent[i]] + "<br>");
+}
+        
+        function prims(Graph){
+            let parent=[]
+            let key=[]
+            let mstset=[]
+
+            for(let i=0;i<V;i++){
+                parent[i]=0;
+                key[i]=Number.MAX_VALUE
+                mstset[i]=false
+            }
+            key[0]=0;
+
+            for(let count=0;count<V-1;count++){
+                let u=minset(key,mstset)
+                mstset[u]=true
+
+                for(let v=0;v<V;v++){
+                    if(Graph[u][v]!=0 && mstset[v]==false && Graph[u][v]<key[v]){
+                        key[v]=Graph[u][v];
+                        parent[v]=u
+                    }
+
+                }
+            }
+            printMST(parent,Graph)
+        }
+        let Graph = [ [ 0, 2, 0, 6, 0 ],
+[ 2, 0, 3, 8, 5 ],
+[ 0, 3, 0, 0, 7 ],
+[ 6, 8, 0, 0, 9 ],
+[ 0, 5, 7, 9, 0 ] ];
+
+// Print the solution
+prims(Graph);
+
+    </script>
+</body>
+</html>

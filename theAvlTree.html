@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+            class node{
+                constructor(data){
+                    this.data=data;
+                    this.left=null;
+                    this.right=null;
+                    this.height=1;
+                }
+            }
+
+            class AvlTree{
+                constructor(){
+                    this.root=null;
+                }
+
+                height(n){
+                    if(n==null){
+                        return 0;
+                    }
+                return n.height;
+                }
+
+                rightrotate(y){
+                    let x = y.left;
+                    let T2 = x.right;
+                     x.right = y;
+                     y.left = T2;
+                    y.height = Math.max(this.height(y.left), this.height(y.right)) + 1;
+                    x.height = Math.max(this.height(x.left), this.height(x.right)) + 1;
+                     return x;
+                }
+                leftrotate(x){
+                    let y = x.right;
+                    let T2 = y.left;
+                    y.left = x;
+                    x.right = T2;
+                    x.height = Math.max(this.height(x.left), this.height(x.right)) + 1;
+                    y.height = Math.max(this.height(y.left), this.height(y.right)) + 1;
+                    return y;
+                }
+
+                getbalance(n){
+                    if(n==null){
+                        return 0;
+                    }
+                    return this.height(N.left) - this.height(N.right);
+                }
+
+            insertnode(node,item){
+                if(node==null){
+                    return (new node(item))
+                }
+                if(item<node.item)
+                {
+                    node.left=this.insertnode(node.left,item);
+                }
+                else if(item > node.item){
+      node.right = this.insertNodeHelper(node.right, item);
+            }
+            else{
+                return node;
+            }
+            node.height = 1 + Math.max(this.height(node.left), this.height(node.right));
+ 
+            let balanceFactor = this.getBalanceFactor(node);
+            
+
+            if(balanceFactor > 1) {
+      if (item < node.left.item) {
+        return this.rightRotate(node);
+      } else if (item > node.left.item) {
+        node.left = this.leftRotate(node.left);
+        return this.rightRotate(node);
+      }
+    }
+    
+    if (balanceFactor < -1) {
+      if (item > node.right.item) {
+        return this.leftRotate(node);
+      } else if (item < node.right.item) {
+        node.right = this.rightRotate(node.right);
+        return this.leftRotate(node);
+      }
+    }
+    
+    return node;
+}
+
+insert(item){
+    root = this.insertNodeHelper(root, item);
+}
+
+
+preOrder(){
+    this.preOrderHelper(this.root);
+  }
+  preOrderHelper(node){
+    if(node){
+      document.write(node.item);
+      this.preOrderHelper(node.left);
+      this.preOrderHelper(node.right);
+    }
+  }
+    }
+
+let tree =new AVLTree();
+tree.insertNode(33);
+tree.insertNode(13);
+tree.insertNode(53);
+tree.insertNode(9);
+tree.insertNode(21);
+tree.insertNode(61);
+tree.insertNode(8);
+tree.insertNode(11);
+tree.preOrder();
+
+    </script>
+</body>
+</html>

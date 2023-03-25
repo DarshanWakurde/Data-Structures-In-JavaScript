@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+    /* A Naive recursive implementation of
+    0-1 Knapsack problem */
+     
+    // A utility function that returns
+    // maximum of two integers
+    function max(a, b)
+    {
+         return (a > b) ? a : b;
+    }
+  
+    // Returns the maximum value that can
+    // be put in a knapsack of capacity W
+    function knapSack(W, wt, val, n)
+    {
+  
+        // Base Case
+        if (n == 0 || W == 0)
+            return 0;
+  
+        // If weight of the nth item is
+        // more than Knapsack capacity W,
+        // then this item cannot be
+        // included in the optimal solution
+        if (wt[n - 1] > W)
+            return knapSack(W, wt, val, n - 1);
+  
+        // Return the maximum of two cases:
+        // (1) nth item included
+        // (2) not included
+        else
+            return max(val[n - 1] +
+            knapSack(W - wt[n - 1], wt, val, n - 1),
+            knapSack(W, wt, val, n - 1));
+    }
+       
+    let val = [3,7,12];
+    let wt = [3,5,7];
+       let W = 4;
+    let n = 3;
+ 
+    document.write(knapSack(W, wt, val, n));
+
+
+
+            // function knpsack(wt,p,m,n){
+
+
+            //     k=[m][n]
+
+            //     for(let i=0;i<m;i++){
+            //         for(let w=0;w<n;w++){
+            //             if(i==0 || w==0){
+            //                 k[i][w]=0
+            //             }
+            //             else if(wt[i]<=w){
+            //                 k[i][w]=Math.max(P[i]+k[i-1][wt-w],k[i-1][wt-w])
+            //             }
+            //             else{
+            //                 k[i][w]=k[i-1][w]
+            //             }
+            //         }
+            //         return k[n][m]
+            //     }
+            // }
+
+            // weight=[0,18,15,10]
+            //     p=[0,25,14,15]
+            //     m=20
+            //     n=3
+            //     document.write(knpsack(weight,p,m,n))   
+
+    </script>
+</body>
+</html>

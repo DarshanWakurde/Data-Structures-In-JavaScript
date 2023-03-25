@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+            function powerset(dp=[],ar,ind ,n){
+                if(ind==n){
+                    document.write(dp,"<br>")
+                    return
+                }
+                dp.push(ar[ind])
+                powerset(dp,ar,ind+1,n)
+                dp.pop()
+                powerset(dp,ar,ind+1,n)
+            }
+
+            ar=[5,4,6]
+            n=ar.length
+            powerset(dp=[],ar,0,n,)
+
+    </script>
+</body>
+</html>

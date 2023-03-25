@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>queue</title>
+</head>
+<body>
+    <script>
+          class node{
+        constructor(data){
+            this.data=data;
+            this.next=null;
+        }
+    }
+    let front=null;
+    let rear=null;
+    function enque(data){
+        let no=new node(data);
+        if(front==null){
+            front=no;
+            rear=no;
+        }
+        else{
+            rear.next=no;
+            rear=no;
+        }
+    }
+    function deque(){
+        if(front==null){
+            document.write("The Queue is Null")
+        }
+        else{
+            let temp=front;
+            // document.write("Element dequed ",temp.data);
+            // document.write("<br>")
+            front=temp.next;
+            return temp;
+            temp=null;
+        }
+    }
+    function display(){
+        let curr=front;
+        do{ 
+           
+            document.write(curr.data);
+            curr=curr.next;
+            document.write("<br>")
+           
+        }while(curr!=rear)
+    }
+
+    enque(5)
+    enque(6)
+    enque(3)
+    enque(2)
+    enque(71)
+    enque(6)
+    enque(5)
+    enque(8)
+    enque(4)
+    display();
+    document.write("<br>")
+    document.write("<br>")
+    deque();
+    display();  
+    document.write(front.data)
+    document.write("<br>")
+    document.write("<br>")
+    document.write(rear.data)
+    </script>
+  
+</body>
+</html>

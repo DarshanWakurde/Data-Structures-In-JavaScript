@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="button" value="">
+    <script>
+
+        // JavaScript program for insertion in AVL Tree
+        class Node{
+            constructor(data) {
+            this.data = data;
+            this.height = 1;
+            this.left = null;
+            this.right = null;
+            }
+        }
+
+        class AVLTree {
+            constructor() {
+            this.root = null;
+            }
+    
+            // A utility function to get
+            // the height of the tree
+            height(N) {
+            if (N == null) return 0;
+    
+            return N.height;
+
+            document.write("1")
+            }
+    
+            // A utility function to get
+            // maximum of two integers
+            max(a, b) {
+            return a > b ? a : b;
+            document.write(1)
+            }
+    
+            // A utility function to right
+            // rotate subtree rooted with y
+            // See the diagram given above.
+            rightRotate(y) {
+            var x = y.left;
+            var T2 = x.right;
+    
+            // Perform rotation
+            x.right = y;
+            y.left = T2;
+    
+            // Update heights
+            y.height = this.max(this.height(y.left),
+            this.height(y.right)) + 1;
+            x.height = this.max(this.height(x.left),
+            this.height(x.right)) + 1;
+    document.write("1")
+            // Return new root
+            return x;
+            }
+    
+            // A utility function to left
+            // rotate subtree rooted with x
+            // See the diagram given above.
+            leftRotate(x) {
+            var y = x.right;
+            var T2 = y.left;
+    
+            // Perform rotation
+            y.left = x;
+            x.right = T2;
+    
+            // Update heights
+            x.height = this.max(this.height(x.left),
+            this.height(x.right)) + 1;
+            y.height = this.max(this.height(y.left),
+            this.height(y.right)) + 1;
+            document.write("1")
+            // Return new root
+            return y;
+            }
+    
+            // Get Balance factor of node N
+            getBalance(N) {
+            if (N == null) return 0;
+            return this.height(N.left) - this.height(N.right);
+            document.write("1")
+            }
+    
+            insert(data){
+       let no=new Node(data);
+       if(this.root==null){
+           this.root=no;
+           this.balan(no)
+          
+       }
+       else{
+             this.insertnex(this.root,no);  
+             this.balan(no)
+       }
+   }
+   //--------------------------------------------------||
+   insertnex(root,no){
+        if(root.data<no.data){
+            if(root.left==null){
+                root.left=no;
+                 
+            }
+            else{
+                this.insertnex(root.left,no);
+             
+            }
+        }
+   else if(root.data>no.data){
+            if(root.right==null){
+                root.right=no;
+               
+            }
+            else{
+                this.insertnex(root.right,no);
+             
+            }
+        }
+       
+    }
+
+        balan(no){
+no.height=this.max(this.height(no.left),this.height(no.right))+1
+
+var balance = this.getBalance(no);
+      // If this node becomes unbalanced, then there
+      // are 4 cases Left Left Case
+
+      if (balance > 1 && no.data < no.left.data){
+          return this.rightRotate(no);
+         
+      }
+    
+
+      // Right Right Case
+      if (balance < -1 && no.data > no.right.data){
+          return this.leftRotate(no);
+         
+      }
+          
+        
+
+      // Left Right Case
+      if (balance > 1 && no.data > no.left.data) {
+          node.left = this.leftRotate(no.left);
+          return this.rightRotate(no);
+       
+          
+      }
+
+      // Right Left Case
+      if (balance < -1 && no.data< no.right.data) {
+          no.right = this.rightRotate(no.right);
+          return this.leftRotate(no);
+          
+
+      }
+      /* return the (unchanged) node pointer */
+      return no;
+    }            
+            // A utility function to print preorder traversal
+            // of the tree.
+            // The function also prints height of every node
+            preOrder(node) {
+            if (node != null) {
+                document.write(node.data+ " ");
+                this.preOrder(node.left);
+                this.preOrder(node.right);
+            }
+        }
+
+        }
+        // Driver code
+        var tree = new AVLTree();
+        tree.insert(10)
+        tree.insert(20)
+        tree.insert(30)
+        tree.insert(40)
+        tree.insert(50)
+        tree.insert(25)
+        
+        tree.preOrder(tree.root)     
+        document.write("->",tree.root.data)  
+    </script>
+    
+</body>
+</html>

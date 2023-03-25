@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+function f(i,arr,ar,n,s){
+
+if(i>=n){
+    let sum=0;
+         for (let i=0;i<ar.length;i++){
+            if(ar[i]!=undefined){
+                sum=sum+ar[i];
+            }
+         }
+         if(sum==s){
+            for (let i=0;i<ar.length;i++){
+            if(ar[i]!=undefined){
+              
+                document.write(ar[i]," ")
+            }
+        }
+         
+         document.write("<br>")
+         return true
+         }
+         else{
+            return false
+         }
+    return
+}
+ar.push(arr[i])
+let bool=f(i+1,arr,ar,n,s)
+if(bool==true){
+    return true;
+}
+ar.pop()
+let bool2=f(i+1,arr,ar,n,s)
+if(bool2==true){
+    return true
+}
+
+return false
+
+}
+
+let arr=[1,2,1]
+let n=arr.length
+let ar=new Array(arr.length-1)
+let s=2
+f(0,arr,ar,n,s)
+
+
+
+
+    </script>
+</body>
+</html>

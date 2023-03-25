@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>linkedlist</title>
+</head>
+<body>
+    <script>
+        class node{
+            constructor(data){
+                this.data=data;
+                this.next=null;
+            }
+        }
+class linked{
+    constructor(){
+        this.head=null;
+        this.tail=null;
+        this.size=0;
+    }
+
+    add(data){
+        const no=new node(data);
+        if(this.head==null){
+            this.head=no;
+            this.tail=no;
+        }
+        else{
+            this.tail.next=no
+            this.tail=no
+        }
+    }
+
+addsp(data,ind){
+    const no=new node(data);
+    let curr=this.head;
+    let prev=this.head;
+   for(let i=0;i<ind-1;i++){
+    if(curr.next){
+        prev=curr;
+    }
+    curr=curr.next;
+   }
+   prev.next=no;
+   no.next=curr;
+}
+
+    display(){
+        let curr=this.head;
+        while(curr!=null){
+            document.write(curr.data," ");
+            curr=curr.next;
+        }
+    }
+
+
+}
+
+let li=new linked();
+li.add(5)
+li.add(6)
+li.add(7)
+li.addsp(1,1)
+li.add(8)
+li.display()
+    </script>
+</body>
+</html>

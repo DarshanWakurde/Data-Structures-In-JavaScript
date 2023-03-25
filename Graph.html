@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+class Graph{
+    constructor(noOfVer){
+        this.noOfVer=noOfVer;
+        this.list=new Map();
+    }
+    addVertex(v){
+        this.list.set(v,[])
+    
+    }
+
+    addEdge(v,w){
+        this.list.get(v).push(w)
+        this.list.get(w).push(v)  
+    }
+    deleteEdge(v,w){
+        this.list.get(v).pop(w)
+        this.list.get(w).pop(v)
+    }
+
+    printGraph(){
+        let keys=this.list.keys();
+        for(let v of keys){
+            let elist=this.list.get(v);
+            let data=''
+         for(let e in elist)
+            {
+                data=data+elist[e]+' '
+            }
+            document.write(v+'->'+data,"<br>")
+        }
+    }
+
+
+bfs(v){
+   
+    let q=[];
+    q.push(v)
+    let visited=[]
+
+    while(q.length>0){
+        let element=q.shift();
+        visited[element]=true;
+        document.write(element," ")
+        let edata=this.list.get(element)
+        for(let v in edata){
+            let data=edata[v]
+            if(!visited[data]){
+                q.push(data);
+                visited[data]=true;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+    // bfs(v){
+         
+    //     let q=[];
+    //     q.push(v);
+    //     let visited=[]
+     
+    //     while(q.length>0){
+    //             let element=q.shift();
+    //             visited[element]=true;
+    //             document.write(element)
+    //             let elist=this.list.get(element);
+    //             for(let edata in elist){
+    //                 let e=elist[edata]
+    //                 if(!visited[e]){
+    //                     q.push(e);
+    //                     visited[e]=true
+    //                 }
+    //             }
+    //         }
+    // }
+}
+
+let g=new Graph(4);
+g.addVertex('A')
+g.addVertex('B')
+g.addVertex('C')
+g.addVertex('D')
+g.addVertex('E')
+g.addVertex('F')
+g.addVertex('G')
+g.addVertex('H')
+g.addVertex('I')
+//------------------------------
+g.addEdge('A','B','D','E')
+g.addEdge('B','C','A','E')
+g.addEdge('C','F',)
+g.addEdge('D','A','G')
+g.addEdge('E','A','B','G')
+g.addEdge('F','C')
+g.addEdge('G','E','D','H')
+g.addEdge('H','I','G')
+g.addEdge('I','H')
+// g.printGraph();
+g.bfs('A');
+
+
+
+    </script>
+    
+</body>
+</html>

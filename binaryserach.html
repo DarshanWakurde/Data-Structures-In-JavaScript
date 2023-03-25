@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function searchInBinary(arr,l,r,ele){
+            let mid=Math.floor((l+r)/2);
+             
+          
+
+                if(arr[mid]==ele){
+                    document.write("Element found ",ele,"=",arr[mid])
+                    return 
+                }
+                else if(arr[mid]>ele){
+                 
+                    searchInBinary(arr,l,mid-1,ele)
+                }
+                else if(arr[mid]<ele){
+           
+                    searchInBinary(arr,mid+1,r,ele)
+                } 
+              else if(mid==l || mid==r){
+                if(arr[mid]!=ele){
+                    document.write("sorry element not found")
+                }
+                
+              }
+        return
+               
+          
+        
+        }
+
+ let arr=[1,5,6,8,11,13,17,55,100]
+
+
+
+let l=0;
+let r=arr.length-1;
+
+let search=0
+searchInBinary(arr,l,r,0);
+
+
+    </script>
+</body>
+</html>

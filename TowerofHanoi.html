@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function toH(n,s,h,d){
+            if(n==1){
+                document.write(n," from ",s," to dest ",d,"<br>")
+                return
+            }
+            toH(n-1,s,d,h)
+            document.write(n," from ",s," to dest ",d,"<br>")
+            toH(n-1,h,s,d)
+        }
+
+        let n=3;
+        let s='S'
+        let H='H'
+        let D='D'
+        toH(n,s,H,D)
+    </script>
+</body>
+</html>

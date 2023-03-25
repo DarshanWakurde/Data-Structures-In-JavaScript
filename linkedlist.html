@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>linkedlist</title>
+</head>
+<body>
+<input type="number" id="t1">
+<br>
+<input type="number" id="t2">
+<br>
+<select id="s1">
+    <option value="add">+</option>
+    <option value="sub">-</option>
+    <option value="mul">*</option>
+    <option value="div">/</option>
+</select>
+
+CAL 
+<input type="submit"  id="s2" onclick="getval()">
+    <script>
+
+function getval(){
+let val=document.getElementById("t1").value
+let val2=document.getElementById("t2").value
+let opretor=document.getElementById("s1").value
+let num;
+
+alert(opretor);
+
+}
+ class node{
+        constructor(data){
+                this.data=data;
+                this.next=null;
+                this.prev=null;
+        }
+      }
+
+      class linkedlsit{
+        constructor(){
+            this.head=null;
+            this.tail=null;
+            this.size=0;
+        }
+         
+        empty(){
+            return this.size==0;
+        }
+
+        add(data){
+            const no=new node(data);
+
+            if(this.empty()){
+                this.head=no;
+                this.tail=no;
+            }
+            else{
+                this.tail.next=no;
+                no.prev=this.tail;
+                this.tail=no;
+            }
+            this.tail.next=this.head
+            this.size++;
+
+        }
+
+        print(){
+
+            let curr=this.head;
+            let str=' ';
+            while(this.size>0){
+                str=str+curr.data+"<->";
+                curr=curr.next;
+                this.size--
+            }
+            document.write(str);
+        }
+
+            
+    delete(ind){
+        if(this.empty()){
+            document.write("the list is empty");
+        }
+        else{
+            let curr=this.head;
+            let prev=this.head;
+            for(let i=0;i<ind-1;i++){
+                    
+                curr=curr.next
+            }
+           prev=curr.next;
+           curr.next=prev.next;
+          
+        }
+            
+            this.size--
+
+        }
+
+
+      }
+
+let li =new linkedlsit();
+// li.delete(0);
+li.add(5);
+li.add(6);
+li.add(7);
+li.add(8);
+li.delete(3);
+li.add(9);
+li.add(7);
+li.print();
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

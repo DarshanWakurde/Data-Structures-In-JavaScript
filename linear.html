@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+class node {
+    constructor(data) {
+        this.data=data;
+        this.next=null;
+        this.prev=null;
+    }
+}
+class DLL {
+    constructor() {
+        this.head=null;
+        this.tail=null;
+    }
+add(data){
+    let a=new node(data);
+    if (this.head==null) {
+        this.head=a;
+        this.tail=a;
+    }else{
+        this.tail.next=a;
+        a.prev=this.tail;
+        this.tail=a;
+        
+    }
+
+}
+addSpf(data,index){
+    let a=new node(data);
+    if (this.head==null) {
+        this.head=a;
+        this.tail=a;
+    }else{
+        let curr=this.head;
+        for(let i=0;i<index;i++){
+            curr=curr.next
+        }
+        let nex=curr.next
+        curr.next=a
+        a.prev=curr;
+        a.next=nex
+        nex.prev=a 
+    }
+
+}
+deleteFirst() {
+    if (this.head === null) {
+      return null;
+    }
+    const removedNode = this.head;
+    if (this.head === this.tail) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      this.head = removedNode.next;
+      this.head.prev = null;
+      removedNode.next = null;
+    }
+    this.size--;
+    return removedNode.data;
+  }
+
+  // Remove a specific node from the list
+  deleteNode(target) {
+    let currentNode = this.head;
+    while (currentNode !== null) {
+      if (currentNode.data === target) {
+        if (currentNode === this.head) {
+          return this.deleteFirst();
+        }
+        if (currentNode === this.tail) {
+          this.tail = currentNode.prev;
+          this.tail.next = null;
+          currentNode.prev = null;
+          this.size--;
+          return currentNode.data;
+        }
+        currentNode.prev.next = currentNode.next;
+        currentNode.next.prev = currentNode.prev;
+        currentNode.prev = null;
+        currentNode.next = null;
+        this.size--;
+        return currentNode.data;
+      }
+      currentNode = currentNode.next;
+    }
+    return null;
+  }
+
+    display(){
+    let point=this.head;
+        while (point!==null) {
+            document.write(point.data,"<-->")
+            point=point.next;
+        }
+}
+
+}
+let b=new DLL();
+
+b.add(2);
+b.add(3);
+b.add(4);
+b.add(6);
+b.add(7);
+document.write("Doubly link list")
+document.write("<br>")
+b.display();
+document.write("<br>")
+document.write("Add Specific")
+document.write("<br>")
+b.addSpf(8,2)
+b.deleteNode(4)
+b.display();
+
+
+
+
+    </script>
+</body>
+</html>

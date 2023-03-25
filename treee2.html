@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class node{
+    constructor(data){
+        this.data=data;
+        this.left=null;
+        this.right=null
+    }
+}
+
+class tree{
+    constructor(){
+        this.root==null;
+    }
+insert(data){
+       let no=new node(data);
+       if(this.root==null){
+           this.root=no;
+       }
+       else{
+             this.insertnex(this.root,no);
+       }
+   }
+   insertnex(root,no){
+        if(root.data<no.data){
+            if(root.left==null){
+                root.left=no;
+            }
+            else{
+                this.insertnex(root.left,no);
+            }
+        }
+   if(root.data>no.data){
+            if(root.right==null){
+                root.right=no;
+            }
+            else{
+                this.insertnex(root.right,no);
+            }
+        }
+    } 
+    min(root){
+        if(root.left==null){
+            return root.data
+        }
+        else{
+            this.min(root.left)
+        }
+    }
+
+
+    delete(data){
+        this.root=this.delnode(this.root,data)
+    }
+
+    delnode(root,data){
+
+        if(root==null){
+            return root;
+        }
+      else if(data<root.data){
+        root.left=this.delnode(root.left,data)
+      }
+      else if(data>root.data){
+        root.right=this.delnode(root.right,data)
+      }
+      else{
+        if(root.left==null && root.right==null){
+            return null
+        }
+        if(root.right==null){
+            return root.left
+        }
+        else if(root.left==null){
+            return root.right
+        }
+        root.data=this.min(root.right)
+        root.right=this.delnode(root.right,root.data)
+      }
+      return root;
+    }
+
+
+   inorder(node)
+{
+    if(node !== null)
+    {
+
+        document.write(node.data," ");
+        
+        this.inorder(node.right);
+        this.inorder(node.left);
+    }
+}
+        }
+
+
+let t=new tree();
+t.insert(5);
+t.insert(6);
+t.insert(7);
+t.insert(4);
+t.insert(1);
+
+t.insert(8);
+
+t.delete(8)
+t.inorder(t.root);
+
+    </script>
+</body>
+</html>

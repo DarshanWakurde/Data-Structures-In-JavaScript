@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      
+
+      class node{
+        constructor(data){
+            this.data=data;
+            this.next=null;
+            this.prev=null;
+        }
+      }
+
+   class doublelinkedlist{
+            constructor(){
+                this.head=null;
+                this.tail=null;
+                this.size=0;
+                
+            }
+
+            empty(){
+                return this.size==0;
+            }
+        add(data){
+           const no=new node(data);
+           if(this.empty()){
+            this.head=no;
+            this.tail=no;
+           }
+        else{
+            this.tail.next=no;
+            no.prev=this.tail;
+            this.tail=no;
+           
+        }
+           
+        }
+        
+print(){
+if(this.isempty()){
+   document.write("is empty");
+}
+else{
+let curr=this.head;
+let str=' '
+while(curr){
+    str+=curr.data+ " ";
+    curr=curr.next;
+}
+document.write(str);
+}
+}
+}
+
+let d=new doublelinkedlist();
+d.add(5)
+d.add(6)
+d.add(7)
+d.add(8)
+d.print()
+
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="text-align: center;">
+    <tr class =" roshan "  width ="20">
+<td >
+    darshan
+</td>
+</div>
+
+    </tr>
+    <div style="text-align: center;">
+    <label for="From">From:</label>
+    <input type="date" id="date" >
+
+    <br>
+    <label for="To">To:</label>
+    <input type="date" id="date2" >
+    <button onclick=getdata()>get date</button>
+</div>
+
+
+    <script>
+
+
+
+        // var input1=document.getElementById("date").value;
+        // var input2=document.getElementById("date1").value;
+
+        // var from = new Date(input1);
+        // var to= new Date(input2);
+var input;
+var dateEntered;
+var input2;
+      
+
+            document.getElementById("date").addEventListener("change", function() {
+    input = this.value;
+    dateEntered = new Date(input);
+});
+document.getElementById("date2").addEventListener("change", function() {
+    input2 = this.value;
+    dateEntered2 = new Date(input2);
+});
+
+function getdata(){
+    document.write(dateEntered); 
+    document.write("<br>")
+    document.write(dateEntered2); 
+  
+}
+
+       
+    </script>
+</body>
+</html>

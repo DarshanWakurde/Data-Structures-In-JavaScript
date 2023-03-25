@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <Script>
+class node{
+    constructor(data){
+        this.data=data;
+        this.next=null
+    }
+}
+
+class queue{
+    constructor(){
+        this.front=null;
+        this.rear=null;
+    }
+add(data){
+    let n=new node(data);
+    if(this.front==null){
+        this.front=n;
+        this.rear=n;
+    }
+    else{
+        this.rear.next=n;
+        this.rear=n
+    }
+}
+
+deq(){
+
+    if(this.front==null){
+        document.write("queue is empty");
+    }
+    else{
+        let del=this.front;
+        this.front=this.front.next;
+        return del.data
+        
+    }
+
+}
+disp(){
+let curr=this.front;
+while(curr!=null){
+    document.write(curr.data," ");
+    curr=curr.next
+}
+
+}
+
+peek(){
+    document.write(this.front.data);
+}
+
+}
+
+let d=new queue();
+d.add(5)
+d.add(6)
+d.add(7)
+d.add(2)
+d.add(1)
+d.deq()
+d.disp();
+document.write("<br>");
+d.peek();
+
+
+
+
+
+
+
+    </Script>
+</body>
+</html>

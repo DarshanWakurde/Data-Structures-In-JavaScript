@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class node{
+            constructor(data){
+                this.data=data;
+                this.next=null;
+                this.prev=null;
+
+            }
+        }
+
+    class link{
+            constructor(){
+                this.head=null;
+                this.tail=null;
+            }
+
+            add(data){
+                    let no=new node(data)
+                if(this.head==null){
+                    this.head=no;
+                    this.tail=no;
+                }
+                else{
+                    this.tail.next=no;
+                    no.prev=this.tail;
+                    this.tail=no;
+                }
+
+            }
+
+            deletesp(ind){
+                    let curr=this.head;
+                for(let i=0;i<ind-1;i++){
+                    curr=curr.next
+                }
+
+                let nex=curr.next;
+                curr.next=nex.next
+                nex.next.prev=curr
+                nex=null
+            }
+
+            deleFirst(){
+                let newhead=this.head.next;
+                this.head=newhead
+                this.head.prev=null;
+            }
+
+            print(){
+                let curr=this.head
+                while(curr!=null){
+
+                    document.write(curr.data,"->");
+
+                    curr=curr.next
+                }
+            }
+
+
+    }
+
+    let l=new link()
+    l.add(5)
+    l.add(4)
+    l.add(6)
+    l.add(7)
+    l.add(8)
+    l.add(9)
+    l.add(10)
+    l.print()
+    document.write("<br>")
+    l.deleFirst();
+
+    l.print()
+
+
+
+    </script>
+</body>
+</html>

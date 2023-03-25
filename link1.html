@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>linklist</title>
+</head>
+<body>
+    
+    <script>
+        class Node{
+            constructor(data){
+                this.data=data;
+                this.next=null;
+            }
+        }
+
+        class linkedList{
+          constructor(){
+            this.head=null;
+            this.tail=null;
+            this.size=0;
+          }
+          add(data){
+            let no=new Node(data)
+            if(this.head==null){
+                this.head=no;
+                this.tail=no;
+            }
+            else{
+                this.tail.next=no
+                this.tail=no;
+            }
+            this.size++;
+            // document.write(no.data,"->")
+          }
+addsp(data,index){
+  if(index<0 || index>this.size){
+    alert("wrong index");
+   }
+   else if(index==0)
+   {
+    document.write("The Node added first");
+   }
+   else{
+        let curr=this.head;
+        let prev=this.head;
+        const no=new Node(data);
+        for(let i=1;i<index;i++){
+          if(curr.next){
+             prev=curr;
+             curr=curr.next;
+          }
+        }
+        no.next=prev.next;
+        prev.next=no;
+      } 
+}
+delfirst(){
+  if(this.head==null){
+    alert("sorry null list")
+  }
+  let no=this.head;
+  no=null;
+  this.head=this.head.next
+}
+dellast(){
+  if(this.head==null){
+    alert("sorry null list")
+  }
+  let curr=this.head;
+  let prev=curr;
+  while(curr!=null){
+    if(curr.next){
+      prev=curr
+     
+    }
+    curr=curr.next
+  }
+  document.write(prev.data)
+  this.tail=prev;
+  this.tail.next=null
+}
+
+
+          print(){
+            let curr=this.head;
+        let str=''
+            while(curr){
+               str+=curr.data+"-"
+            curr=curr.next;
+            }
+        document.writeln(str)
+          }
+
+
+        }
+let l1=new linkedList();
+l1.add(5);
+l1.add(6);
+l1.add(8);
+l1.add(7);
+l1.add(8);
+l1.addsp(0,4)
+l1.print();
+document.write("<br>");
+l1.delfirst();
+l1.print();
+document.write("<br>");
+l1.dellast();
+l1.print()
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+function reverse(stk){
+ 
+  let qu = [];
+
+  while (stk.length > 0) {
+    qu.push(stk.pop());
+  }
+
+  while (qu.length > 0) {
+    stk.push(qu.shift());
+  }
+  return stk
+}
+ 
+
+let stk = [10, 20, 30, 40];
+ 
+let s=reverse(stk);
+ 
+
+document.write("After Reverse : (Top to Bottom)");
+
+  document.write(s);
+
+
+    </script>
+    
+</body>
+</html>

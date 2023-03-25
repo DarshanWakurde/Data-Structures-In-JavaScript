@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+class PriorityQueue{
+constructor(){
+this.values =[];
+}
+enqueue(val, priority){
+this.values.push({val:val,priority});
+this.sort()
+};
+dequeue(){
+return this.values.shift();
+}
+isEmpty(){
+    return this.values.length==0
+}
+front(){
+    return this.values[0]
+}
+sort(){
+this.values.sort((a,b) => a.priority -b.priority);
+};
+}
+const pq=new PriorityQueue();
+class WeightGraph{
+    constructor(){
+        this.adjlist=new Map();
+    }
+Addvert(ver){
+        this.adjlist.set(ver,[])   
+}
+AddEdgeandWeight(var1,var2,weight){
+ 
+    this.adjlist.get(var1).push({target:var2,wt:weight})
+
+    // this.adjlist.get(var2).push({node:var1,wt:weight})
+}
+
+print(){
+  
+ let keys=this.adjlist.keys();
+
+ for(let key of keys){
+    console.log(key,'->',this.adjlist.get(key))
+ }
+    document.write("1")
+}
+
+
+dijkstra(source='A'){
+
+
+        let dist={}
+        
+        for(let ver of this.adjlist.keys()){
+            dist[ver]=Infinity;
+        }
+       
+
+        dist[source]=0
+
+        pq.enqueue(source,0)
+
+        while(!pq.isEmpty()){
+
+            let source=pq.dequeue().val;
+            
+          
+            let sourceAdj=this.adjlist.get(source);
+        //   console.log(sourceAdj)
+            for(let curr of sourceAdj){
+ 
+                if(dist[curr.target]>dist[source]+curr.wt){
+                  
+                    dist[curr.target]=dist[source]+curr.wt;
+                   
+                    pq.enqueue(curr.target,dist[curr.target])
+                  
+                }
+            }
+        }
+        return dist
+
+}
+
+
+}
+
+let g=new WeightGraph();
+g.Addvert('A')
+g.Addvert('B')
+g.Addvert('C')
+g.Addvert('D')
+g.Addvert('E')
+
+g.AddEdgeandWeight('A','B',10)
+g.AddEdgeandWeight('A','C',3)
+g.AddEdgeandWeight('B','C',1)
+g.AddEdgeandWeight('C','B',4)
+g.AddEdgeandWeight('B','D',2)
+g.AddEdgeandWeight('D','E',7)
+g.AddEdgeandWeight('E','D',9)
+g.AddEdgeandWeight('C','E',2)
+g.AddEdgeandWeight('C','D',8)
+// g.print()
+console.log(g.dijkstra());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//         class PriorityQueue{
+
+// constructor(){
+// this.values =[];
+// }
+
+// enqueue(val, priority){
+// this.values.push({val, priority});
+// this.sort()
+// }
+
+// dequeue(){
+// return this.values.shift().val;
+// }
+
+// sort(){
+// this.values.sort((a,b) =>a.priority-b.priority);
+// }
+
+
+// }
+
+// let p=new PriorityQueue();
+// p.enqueue(5,1);
+// p.enqueue(2,6);
+// p.enqueue(3,7);
+// p.enqueue(4,5);
+// p.enqueue(1,9);
+// document.write(p.dequeue()," ")
+// document.write(p.dequeue()," ")
+// document.write(p.dequeue()," ")
+// document.write(p.dequeue()," ")
+// document.write(p.dequeue()," ")
+
+    </script>
+</body>
+</html>

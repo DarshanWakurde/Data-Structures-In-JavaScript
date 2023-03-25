@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+class nop{
+    constructor(m,n){
+        this.m=m;
+        this.n=n;
+    }
+    numberOfPaths(){
+        return this.numberOfPathsHelp(this.m-1,this.n-1)
+    
+    }
+    numberOfPathsHelp(m,n){
+            if(m==0 && n==0){
+                return 1
+            }
+            if(m<0 || n<0){
+                return 0
+            }
+            let lef=this.numberOfPathsHelp(m-1,n)
+            let rig=this.numberOfPathsHelp(m,n-1)
+            return lef+rig  
+    }
+}
+
+
+
+let nu=new nop(3,3)
+document.write(nu.numberOfPaths(),"<br>");
+
+          
+        //   function f(m,n,arr){
+        //     if(m==0 && n==0){
+        //         return 1
+        //     }
+        //     if(m<0 || n<0){
+        //         return 0
+        //     }
+        //     let left=f(m-1,n,arr)
+        //     let right=f(m,n-1,arr)
+        //     return left+right     
+        // }
+       
+        //   let m=3;
+        //   let n=4
+        // let a=[m][n]
+        // let arr=[m][n]
+        // document.write(f(m-1,n-1,arr));
+
+
+
+
+
+    </script>
+</body>
+</html>
